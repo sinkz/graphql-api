@@ -2,5 +2,6 @@ import { ModelsInterface } from './ModelsInterface';
 
 export interface BaseModelInterface {    
     prototype?;
-    associate?(models: ModelsInterface)
+    //Serve pra associar um model com outro
+    associate?(models: ModelsInterface): void
 }

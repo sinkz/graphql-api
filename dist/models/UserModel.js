@@ -35,6 +35,7 @@ exports.default = (sequelize, DataTypes) => {
         }
     }, {
         tableName: 'users',
+        //Hooks são triggers, no sequelize são eventos de ciclo de vida, usar de acordo com o que precisar, no caso do create ele ira fazer algo antes da criação
         hooks: {
             beforeCreate: (user, options) => {
                 //Criptografar a senha do usuario, por isso é necessário fazer antes de persistir na tabela
@@ -43,7 +44,9 @@ exports.default = (sequelize, DataTypes) => {
             }
         }
     });
-    //Usar prototipe quando é um método de instancia
+    //Fazer relação/associacao
+    // User.associate = (models: ModelsInterface):void => {};
+    //Usar prototipe quando é um método de instancia, vai servir para comparar os passwords, por isso precisa ser método de instância
     User.prototype.isPassword = (encodedPassword, password) => {
         return bcryptjs_1.compareSync(password, encodedPassword);
     };

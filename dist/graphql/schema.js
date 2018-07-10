@@ -5,12 +5,12 @@ const users = [
     {
         id: 1,
         name: 'Diego Augusto',
-        email: 'diih_augusto@live.com'
+        email: 'diih_augusto2@live.com'
     },
     {
         id: 2,
         name: 'Giovana',
-        email: 'giovana@hotmail.com'
+        email: 'giovana@hotmai2l.com'
     }
 ];
 const typeDefs = `
@@ -29,6 +29,12 @@ const typeDefs = `
     }
 `;
 const resolvers = {
+    //Resolver trivial (n é obrigatório pos user ja existe)
+    User: {
+        id: (user) => user.id,
+        name: (user) => user.name,
+        email: (user) => user.email
+    },
     Query: {
         allUsers: () => users
     },
@@ -38,7 +44,7 @@ const resolvers = {
             users.push(newUser);
             return newUser;
         }
-    }
+    },
 };
 //mapeia os tipos e resolvers
 exports.default = graphql_tools_1.makeExecutableSchema({ typeDefs, resolvers });
