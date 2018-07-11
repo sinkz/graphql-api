@@ -4,12 +4,15 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(module.filename);
-const env = process.env.NODE_ENV || 'development';
+let env = process.env.NODE_ENV.trim() || 'development';
 //Pega a config que queremos a partir do env
 let config = require(path.resolve(`${__dirname}./../config/config.json`))[env];
 let db = null;
+console.log(config);
 if (!db) {
     db = {};
+    const operatorsAliases = false;
+    config = Object.assign({ operatorsAliases }, config);
     const sequelize = new Sequelize(config.database, config.username, config.password, config);
     //Necessário para ler nossos models
     fs

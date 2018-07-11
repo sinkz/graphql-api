@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "S0eusei#@",
-    "database": "database_development",
+    "database": "graphql_blog_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
